@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { loadData } from './Table.utils';
 import Header from './Header/Header';
 import Grid from './Grid/Grid';
+import Footer from './Footer/Footer';
+import Spinner from './common/Spinner/Spinner';
+import styles from './Table.module.scss'
+
+export const Context = createContext();
 
 const Table = () => {
   const [dataRequest, setDataRequest] = useState({
@@ -10,33 +15,42 @@ const Table = () => {
     error: null,
   });
   const [sortRequest, setSortRequest] = useState({
-    sortBy: 'year',
-    order: 'DESC',
+    sortBy: 'name',
+    order: 'ASC',
   });
-
+  const [selectedPage, setSelectedPage] = useState(0);
+  const [recordLimit, setRecordLimit]= useState(20);
   const { sortBy, order } = sortRequest;
   const params = {
-    $limit: 20,
+    $limit: recordLimit,
     $order: `\`${sortBy}\` ${order}`,
+    $offset: selectedPage * recordLimit,
   };
 
   useEffect(() => {
     loadData({ params, setDataRequest });
-  }, []);
+  }, [selectedPage, sortRequest]);
 
   return (
     <>
-      {!dataRequest.isLoading && (
-        <table>
-          <Header
-            sortRequest={sortRequest}
-            setSortRequest={setSortRequest}
-            data={dataRequest.data}
-            setDataRequest={setDataRequest}
-          />
-          <Grid data={dataRequest.data} />
+      <Context.Provider
+        value={{
+          sortRequest,
+          setSortRequest,
+          data: dataRequest.data,
+          setDataRequest,
+          setSelectedPage,
+        }}
+      >
+        <table className={styles.root}>
+          <Header />
+          {!dataRequest.isLoading && (
+            <Grid data={dataRequest.data} />
+          )}
         </table>
-      )}
+        {!!dataRequest.isLoading && <Spinner />}
+        <Footer setSelectedPage={setSelectedPage} recordLimit={recordLimit} selectedPage={selectedPage} />
+      </Context.Provider>
     </>
   );
 };

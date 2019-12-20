@@ -1,11 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import HeaderItem from './HeaderItem/HeaderItem';
 
-const HeaderItem = ({ label, itemKey, setSortRequest }) => (
-  <th onClick={() => console.log(itemKey)}>{label}</th>
-);
-
-const Header = ({ setSortRequest }) => {
+const Header = () => {
   return (
     <thead>
       <tr>
@@ -21,9 +17,5 @@ const Header = ({ setSortRequest }) => {
   );
 };
 
-HeaderItem.propTypes= {
-  label: PropTypes.string.isRequired,
-  itemKey: PropTypes.string.isRequired,
-};
 
 export default Header;
