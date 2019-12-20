@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HeaderItem = ({ label, itemKey }) => (
+const HeaderItem = ({ label, itemKey, setSortRequest }) => (
   <th onClick={() => console.log(itemKey)}>{label}</th>
 );
 
-const Header = () => {
+const Header = ({ setSortRequest }) => {
   return (
     <thead>
       <tr>

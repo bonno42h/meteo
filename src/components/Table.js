@@ -9,20 +9,31 @@ const Table = () => {
     isLoading: true,
     error: null,
   });
+  const [sortRequest, setSortRequest] = useState({
+    sortBy: 'year',
+    order: 'DESC',
+  });
 
-  const payload = {
+  const { sortBy, order } = sortRequest;
+  const params = {
     $limit: 20,
+    $order: `\`${sortBy}\` ${order}`,
   };
 
   useEffect(() => {
-    loadData({ params: payload, setDataRequest });
+    loadData({ params, setDataRequest });
   }, []);
 
   return (
     <>
       {!dataRequest.isLoading && (
         <table>
-          <Header data={dataRequest.data} setDataRequest={setDataRequest} />
+          <Header
+            sortRequest={sortRequest}
+            setSortRequest={setSortRequest}
+            data={dataRequest.data}
+            setDataRequest={setDataRequest}
+          />
           <Grid data={dataRequest.data} />
         </table>
       )}
