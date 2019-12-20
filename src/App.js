@@ -1,9 +1,13 @@
 import React from 'react';
+import Table from './components/Table';
 
-const App = () => (
-  <div className="App">
-    Hello world!
-  </div>
-);
+const App = () => {
+
+  return (
+    <div className="App">
+      <Table />
+    </div>
+  );
+};
 
 export default App;

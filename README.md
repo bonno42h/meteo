@@ -1,2 +1,2 @@
-# metheo. - work in progress
-Metheorite tracker
+# meteorus. - work in progress
+Meteorite tracker
