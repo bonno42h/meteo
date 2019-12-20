@@ -6,7 +6,6 @@ import styles from './Row.module.scss';
 const Row = ({ rowData }) => {
   const dateParsed = rowData.year !== undefined ? new Date(rowData.year) : null;
   
-  console.log(typeof rowData.mass)
   return (
     <tr className={styles.root}>
       <td className={styles.rowItem}>{rowData.id}</td>
