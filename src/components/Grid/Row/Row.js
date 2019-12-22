@@ -1,11 +1,11 @@
 import React from 'react';
-import format from 'date-fns/format'
+import format from 'date-fns/format';
 import PropTypes from 'prop-types';
 import styles from './Row.module.scss';
 
 const Row = ({ rowData }) => {
   const dateParsed = rowData.year !== undefined ? new Date(rowData.year) : null;
-  
+
   return (
     <tr className={styles.root}>
       <td className={styles.rowItem}>{rowData.id}</td>

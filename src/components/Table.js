@@ -4,7 +4,8 @@ import Header from './Header/Header';
 import Grid from './Grid/Grid';
 import Footer from './Footer/Footer';
 import Spinner from './common/Spinner/Spinner';
-import styles from './Table.module.scss'
+import meteorusLogo from '../assets/meteorus.png';
+import styles from './Table.module.scss';
 
 export const Context = createContext();
 
@@ -19,7 +20,7 @@ const Table = () => {
     order: 'ASC',
   });
   const [selectedPage, setSelectedPage] = useState(0);
-  const [recordLimit, setRecordLimit]= useState(20);
+  const [recordLimit, setRecordLimit] = useState(10);
   const { sortBy, order } = sortRequest;
   const params = {
     $limit: recordLimit,
@@ -29,7 +30,7 @@ const Table = () => {
 
   useEffect(() => {
     loadData({ params, setDataRequest });
-  }, [selectedPage, sortRequest]);
+  }, [selectedPage, sortRequest, recordLimit]);
 
   return (
     <>
@@ -42,14 +43,24 @@ const Table = () => {
           setSelectedPage,
         }}
       >
-        <table className={styles.root}>
-          <Header />
+        <div className={styles.root}>
+          <img src={meteorusLogo} alt="Logo" className={styles.logo} />
+          <table cellPadding="0" cellSpacing="0" className={styles.table}>
+            <Header />
+            {!dataRequest.isLoading && (
+              <Grid data={dataRequest.data} className={styles.grid} />
+            )}
+          </table>
+          {!!dataRequest.isLoading && <Spinner />}
           {!dataRequest.isLoading && (
-            <Grid data={dataRequest.data} />
+            <Footer
+              setSelectedPage={setSelectedPage}
+              recordLimit={recordLimit}
+              selectedPage={selectedPage}
+              setRecordLimit={setRecordLimit}
+            />
           )}
-        </table>
-        {!!dataRequest.isLoading && <Spinner />}
-        <Footer setSelectedPage={setSelectedPage} recordLimit={recordLimit} selectedPage={selectedPage} />
+        </div>
       </Context.Provider>
     </>
   );

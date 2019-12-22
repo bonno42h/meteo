@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { Context } from '../../Table';
-import { ReactComponent as ChevronUp } from '../../../assets/chevron-up.svg';
-import { ReactComponent as ChevronDown } from '../../../assets/chevron-down.svg';
+import styles from './HeaderItem.module.scss';
 
 const HeaderItem = ({ label, itemKey }) => {
   const { sortRequest, setSortRequest, setSelectedPage } = useContext(Context);
   const sortOrder = sortRequest.order === 'ASC' ? 'DESC' : 'ASC';
-  const chevronDirection = sortRequest.order === 'ASC' ? <ChevronUp /> : <ChevronDown />;
+  const chevronDirection = sortRequest.order === 'ASC'
+    ? <FiChevronUp className={styles.chevron} />
+    : <FiChevronDown className={styles.chevron} />;
 
   return (
     <th

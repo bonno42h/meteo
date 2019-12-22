@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  button {
+    border-radius: 50%; 
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background-color: #583bb6;
+    color: #fff;
+    margin: 0 2px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.15s;
+    &:hover {
+      background-color: #4d34a0;
+    }
+  }
+  .selected {
+    background-color: rgb(250, 35, 86);
+    font-weight: bold;
+    &:hover {
+      cursor: auto;
+      background-color: rgb(250, 35, 86);
+    }
+  }
+}
