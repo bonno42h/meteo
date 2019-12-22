@@ -9,3 +9,8 @@ export const loadRecordCount = async (setRecordCount) => {
     console.log(error);
   }
 };
+
+export const handleRecordLimitChange = ({ event, setRecordLimit, setSelectedPage }) => {
+  setRecordLimit(event.target.value);
+  setSelectedPage(0);
+};

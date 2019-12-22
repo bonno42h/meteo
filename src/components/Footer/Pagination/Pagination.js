@@ -36,9 +36,11 @@ const Pagination = ({ selectedPage, setSelectedPage, totalPages }) => {
     <div className={styles.pagination}>
       {selectedPage !== 0 && (
         <>
-          <button type="button" onClick={() => firstPage({ setSelectedPage })}>
-            <FiChevronsLeft />
-          </button>
+          {selectedPage !== 1 && (
+            <button type="button" onClick={() => firstPage({ setSelectedPage })}>
+              <FiChevronsLeft />
+            </button>
+          )}
           <button type="button" onClick={() => prevPage({ setSelectedPage })}>
             <FiChevronLeft />
           </button>

@@ -1,23 +1,49 @@
-import { getData } from '../api/data';
+import { getPagedData, getInfiniteData } from '../api/data';
 
-export const loadData = async ({ params = {}, setDataRequest }) => {
-  setDataRequest((prevState) => ({
+export const loadPagedData = async ({ params = {}, setPagedDataRequest }) => {
+  setPagedDataRequest((prevState) => ({
     ...prevState,
     isLoading: true,
   }));
   try {
-    const { data } = await getData(params);
+    const { data } = await getPagedData(params);
 
-    setDataRequest({
+    setPagedDataRequest({
       data,
       isLoading: false,
       error: null,
+      hasLoaded: true,
     });
   } catch (error) {
-    setDataRequest({
+    setPagedDataRequest({
       data: [],
       isLoading: false,
       error,
+      hasLoaded: true,
+    });
+  }
+};
+
+export const loadInfiniteData = async ({ params = {}, setInfiniteDataRequest }) => {
+  setInfiniteDataRequest((prevState) => ({
+    ...prevState,
+    isLoading: true,
+  }));
+  try {
+    const { data } = await getInfiniteData(params);
+
+    setInfiniteDataRequest((prevState) => ({
+      data: [...prevState.data, ...data],
+      isLoading: false,
+      error: null,
+      hasLoaded: true,
+    }));
+  } catch (error) {
+    setInfiniteDataRequest({
+      data: [],
+      isLoading: false,
+      error,
+      hasLoaded: false,
     });
   }
 };

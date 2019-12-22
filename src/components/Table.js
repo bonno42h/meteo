@@ -1,19 +1,27 @@
-import React, { useState, useEffect, createContext } from 'react';
-import { loadData } from './Table.utils';
+import React, { useState, useEffect } from 'react';
+import { loadPagedData, loadInfiniteData } from './Table.utils';
+import Context from './Context';
 import Header from './Header/Header';
+import TableHeader from './TableHeader/TableHeader';
 import Grid from './Grid/Grid';
 import Footer from './Footer/Footer';
 import Spinner from './common/Spinner/Spinner';
-import meteorusLogo from '../assets/meteorus.png';
 import styles from './Table.module.scss';
 
-export const Context = createContext();
+const { Provider } = Context;
 
 const Table = () => {
-  const [dataRequest, setDataRequest] = useState({
+  const [pagedDataRequest, setPagedDataRequest] = useState({
     data: [],
     isLoading: true,
     error: null,
+    hasLoaded: false,
+  });
+  const [infiniteDataRequest, setInfiniteDataRequest] = useState({
+    data: [],
+    isLoading: true,
+    error: null,
+    hasLoaded: false,
   });
   const [sortRequest, setSortRequest] = useState({
     sortBy: 'name',
@@ -21,38 +29,66 @@ const Table = () => {
   });
   const [selectedPage, setSelectedPage] = useState(0);
   const [recordLimit, setRecordLimit] = useState(10);
+  const [infiniteAmountToDisplay, setInfiniteAmountToDisplay] = useState(0);
   const { sortBy, order } = sortRequest;
-  const params = {
+  const pagedParams = {
     $limit: recordLimit,
     $order: `\`${sortBy}\` ${order}`,
     $offset: selectedPage * recordLimit,
   };
+  const infiniteParams = {
+    $limit: 30,
+    $order: `\`${sortBy}\` ${order}`,
+    $offset: infiniteAmountToDisplay,
+  };
+  const [isInfiniteScroll, setIsInfiniteScroll] = useState(false);
+
+  if (isInfiniteScroll) {
+    window.onscroll = () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        setInfiniteAmountToDisplay(infiniteAmountToDisplay + 30);
+        window.scrollBy(0, -10);
+      }
+    };
+  }
+
+  const { data, isLoading, hasLoaded } = isInfiniteScroll ? infiniteDataRequest : pagedDataRequest;
 
   useEffect(() => {
-    loadData({ params, setDataRequest });
-  }, [selectedPage, sortRequest, recordLimit]);
+    if (isInfiniteScroll) {
+      loadInfiniteData({ params: infiniteParams, isInfiniteScroll, setInfiniteDataRequest });
+    } else {
+      loadPagedData({ params: pagedParams, setPagedDataRequest });
+    }
+  }, [selectedPage, sortRequest, recordLimit, isInfiniteScroll, infiniteAmountToDisplay]);
+
 
   return (
     <>
-      <Context.Provider
+      <Provider
         value={{
           sortRequest,
           setSortRequest,
-          data: dataRequest.data,
-          setDataRequest,
+          data,
+          setPagedDataRequest,
+          setInfiniteDataRequest,
           setSelectedPage,
+          isInfiniteScroll,
+          setIsInfiniteScroll,
+          setInfiniteAmountToDisplay,
         }}
       >
         <div className={styles.root}>
-          <img src={meteorusLogo} alt="Logo" className={styles.logo} />
+          <Header />
           <table cellPadding="0" cellSpacing="0" className={styles.table}>
-            <Header />
-            {!dataRequest.isLoading && (
-              <Grid data={dataRequest.data} />
+            {hasLoaded && <TableHeader />}
+            {!isLoading && !isInfiniteScroll && (
+              <Grid data={data} />
             )}
+            {isInfiniteScroll && <Grid data={data} />}
           </table>
-          {!!dataRequest.isLoading && <Spinner />}
-          {!dataRequest.isLoading && (
+          {(!!isLoading || !hasLoaded) && <Spinner />}
+          {hasLoaded && !isInfiniteScroll && (
             <Footer
               setSelectedPage={setSelectedPage}
               recordLimit={recordLimit}
@@ -61,7 +97,7 @@ const Table = () => {
             />
           )}
         </div>
-      </Context.Provider>
+      </Provider>
     </>
   );
 };

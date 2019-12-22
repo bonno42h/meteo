@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { loadRecordCount } from './Footer.utils';
+import { loadRecordCount, handleRecordLimitChange } from './Footer.utils';
 import Pagination from './Pagination/Pagination';
 import styles from './Footer.module.scss';
 
@@ -12,6 +12,7 @@ const Footer = ({
 }) => {
   const [recordCount, setRecordCount] = useState(null);
   const totalPages = Math.ceil(recordCount / recordLimit);
+
 
   useEffect(() => {
     loadRecordCount(setRecordCount);
@@ -32,7 +33,10 @@ const Footer = ({
         </div>
         <div>
           Records per page:&nbsp;
-          <select value={recordLimit} onChange={(event) => setRecordLimit(event.target.value)}>
+          <select
+            value={recordLimit}
+            onChange={(event) => handleRecordLimitChange({ event, setRecordLimit, setSelectedPage })}
+          >
             <option>10</option>
             <option>20</option>
             <option>30</option>

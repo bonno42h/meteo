@@ -1,0 +1,51 @@
+.root {
+  float: right;
+  padding: 20px 0 20px 20px;
+  height: 60px;
+  display: flex;
+}
+
+.settingsIcon {
+  color: #fff;
+  height: 20px;
+  width: 20px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.settingsContainer {
+  background-color: rgba(88, 59, 182, 0.8);
+  padding: 0 0 0 10px;
+  border-radius: 10px;
+  button {
+    position: relative;
+    top: -8px;
+    right: -10px;
+    float: right;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: rgb(250, 35, 86);
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: 0.15s;
+    &:hover {
+      background-color: rgb(187, 27, 64);
+    }
+  }
+}
+
+.label {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  padding: 15px 0 15px 5px;
+  span {
+    padding-right: 15px;
+    color: #fff;
+  }
+
+}

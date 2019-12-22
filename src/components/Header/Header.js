@@ -1,19 +1,13 @@
 import React from 'react';
-import HeaderItem from './HeaderItem/HeaderItem';
+import meteorusLogo from '../../assets/meteorus.png';
+import Settings from './Settings/Settings';
+import styles from './Header.module.scss';
 
 const Header = () => (
-  <thead>
-    <tr>
-      <HeaderItem label="ID" itemKey="id" />
-      <HeaderItem label="Name" itemKey="name" />
-      <HeaderItem label="Type" itemKey="nametype" />
-      <HeaderItem label="Class" itemKey="recclass" />
-      <HeaderItem label="Mass, g" itemKey="mass" />
-      <HeaderItem label="Fall" itemKey="fall" />
-      <HeaderItem label="Year" itemKey="year" />
-    </tr>
-  </thead>
+  <header className={styles.header}>
+    <img src={meteorusLogo} alt="Logo" className={styles.logo} />
+    <Settings />
+  </header>
 );
-
 
 export default Header;
