@@ -18,7 +18,9 @@ const Settings = () => {
       )}
       {!!settingsVisible && (
         <div className={styles.settingsContainer}>
-          <button type="button" onClick={() => setSettingsVisible(!settingsVisible)}>X</button>
+          <button type="button" onClick={() => setSettingsVisible(!settingsVisible)}>
+            X
+          </button>
           <label className={styles.label}>
             <span>Infinite scroll</span>
             <Switch onChange={() => setIsInfiniteScroll(!isInfiniteScroll)} checked={isInfiniteScroll} />

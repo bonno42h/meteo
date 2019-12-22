@@ -51,6 +51,9 @@ const Table = () => {
       }
     };
   }
+  if (!isInfiniteScroll) {
+    window.onscroll = {};
+  }
 
   const { data, isLoading, hasLoaded } = isInfiniteScroll ? infiniteDataRequest : pagedDataRequest;
 
