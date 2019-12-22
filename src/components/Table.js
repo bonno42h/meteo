@@ -48,7 +48,7 @@ const Table = () => {
           <table cellPadding="0" cellSpacing="0" className={styles.table}>
             <Header />
             {!dataRequest.isLoading && (
-              <Grid data={dataRequest.data} className={styles.grid} />
+              <Grid data={dataRequest.data} />
             )}
           </table>
           {!!dataRequest.isLoading && <Spinner />}
