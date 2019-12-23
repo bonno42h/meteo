@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { Context } from '../../Context';
+import { Context } from '../../../Context';
 import styles from './HeaderItem.module.scss';
 
 const HeaderItem = ({ label, itemKey }) => {

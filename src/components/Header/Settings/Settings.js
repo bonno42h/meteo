@@ -6,7 +6,7 @@ import styles from './Settings.module.scss';
 
 const Settings = () => {
   const [settingsVisible, setSettingsVisible] = useState(false);
-  const { isInfiniteScroll, setIsInfiniteScroll } = useContext(Context);
+  const { isInfiniteScroll, setIsInfiniteScroll, setInfiniteAmountToDisplay } = useContext(Context);
 
   return (
     <div className={styles.root}>
@@ -23,7 +23,13 @@ const Settings = () => {
           </button>
           <label className={styles.label}>
             <span>Infinite scroll</span>
-            <Switch onChange={() => setIsInfiniteScroll(!isInfiniteScroll)} checked={isInfiniteScroll} />
+            <Switch
+              onChange={() => {
+                setIsInfiniteScroll(!isInfiniteScroll);
+                setInfiniteAmountToDisplay((prevState) => prevState + 30);
+              }}
+              checked={isInfiniteScroll}
+            />
           </label>
         </div>
       )}

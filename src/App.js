@@ -1,10 +1,10 @@
 import React from 'react';
-import Table from './components/Table';
+import Landing from './components/Landing';
 import styles from './App.module.scss';
 
 const App = () => (
   <div className={styles.root}>
-    <Table />
+    <Landing />
   </div>
 );
 

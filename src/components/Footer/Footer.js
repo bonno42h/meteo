@@ -51,7 +51,7 @@ Footer.propTypes = {
   selectedPage: PropTypes.number.isRequired,
   setSelectedPage: PropTypes.func.isRequired,
   setRecordLimit: PropTypes.func.isRequired,
-  recordLimit: PropTypes.number.isRequired,
+  recordLimit: PropTypes.string.isRequired,
 };
 
 export default Footer;

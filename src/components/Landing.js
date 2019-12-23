@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { loadPagedData, loadInfiniteData } from './Table.utils';
 import Context from './Context';
 import Header from './Header/Header';
-import TableHeader from './TableHeader/TableHeader';
-import Grid from './Grid/Grid';
+import Table from './Table/Table';
 import Footer from './Footer/Footer';
-import Spinner from './common/Spinner/Spinner';
 import styles from './Table.module.scss';
 
 const { Provider } = Context;
 
-const Table = () => {
+const Landing = () => {
   const [pagedDataRequest, setPagedDataRequest] = useState({
     data: [],
     isLoading: true,
@@ -28,7 +26,7 @@ const Table = () => {
     order: 'ASC',
   });
   const [selectedPage, setSelectedPage] = useState(0);
-  const [recordLimit, setRecordLimit] = useState(10);
+  const [recordLimit, setRecordLimit] = useState('10');
   const [infiniteAmountToDisplay, setInfiniteAmountToDisplay] = useState(0);
   const { sortBy, order } = sortRequest;
   const pagedParams = {
@@ -47,7 +45,6 @@ const Table = () => {
     window.onscroll = () => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         setInfiniteAmountToDisplay(infiniteAmountToDisplay + 30);
-        window.scrollBy(0, -10);
       }
     };
   }
@@ -63,7 +60,7 @@ const Table = () => {
     } else {
       loadPagedData({ params: pagedParams, setPagedDataRequest });
     }
-  }, [selectedPage, sortRequest, recordLimit, isInfiniteScroll, infiniteAmountToDisplay]);
+  }, [selectedPage, sortRequest, recordLimit, infiniteAmountToDisplay]);
 
 
   return (
@@ -72,7 +69,6 @@ const Table = () => {
         value={{
           sortRequest,
           setSortRequest,
-          data,
           setPagedDataRequest,
           setInfiniteDataRequest,
           setSelectedPage,
@@ -83,14 +79,7 @@ const Table = () => {
       >
         <div className={styles.root}>
           <Header />
-          <table cellPadding="0" cellSpacing="0" className={styles.table}>
-            {hasLoaded && <TableHeader />}
-            {!isLoading && !isInfiniteScroll && (
-              <Grid data={data} />
-            )}
-            {isInfiniteScroll && <Grid data={data} />}
-          </table>
-          {(!!isLoading || !hasLoaded) && <Spinner />}
+          <Table hasLoaded={hasLoaded} data={data} isLoading={isLoading} isInfiniteScroll={isInfiniteScroll} />
           {hasLoaded && !isInfiniteScroll && (
             <Footer
               setSelectedPage={setSelectedPage}
@@ -105,4 +94,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default Landing;

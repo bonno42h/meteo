@@ -13,3 +13,7 @@ export function getPagedData(params) {
 export function getRecordCount() {
   return axios.get(`${DATA_URL}/?$select=count(*)`);
 }
+
+export function getRecordById(id) {
+  return axios.get(`${DATA_URL}/id=${id}`);
+}
