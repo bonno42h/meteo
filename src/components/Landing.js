@@ -5,6 +5,7 @@ import Header from './Header/Header';
 import Table from './Table/Table';
 import Footer from './Footer/Footer';
 import styles from './Table.module.scss';
+import ItemDetails from './ItemDetails/ItemDetails';
 
 const { Provider } = Context;
 
@@ -20,6 +21,10 @@ const Landing = () => {
     isLoading: true,
     error: null,
     hasLoaded: false,
+  });
+  const [itemToDisplay, setItemToDisplay] = useState({
+    id: '',
+    visible: false,
   });
   const [sortRequest, setSortRequest] = useState({
     sortBy: 'name',
@@ -75,11 +80,13 @@ const Landing = () => {
           isInfiniteScroll,
           setIsInfiniteScroll,
           setInfiniteAmountToDisplay,
+          setItemToDisplay,
         }}
       >
         <div className={styles.root}>
           <Header />
           <Table hasLoaded={hasLoaded} data={data} isLoading={isLoading} isInfiniteScroll={isInfiniteScroll} />
+          {!!itemToDisplay.visible && <ItemDetails id={itemToDisplay.id} />}
           {hasLoaded && !isInfiniteScroll && (
             <Footer
               setSelectedPage={setSelectedPage}

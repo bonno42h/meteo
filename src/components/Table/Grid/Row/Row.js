@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import format from 'date-fns/format';
 import PropTypes from 'prop-types';
+import Context from '../../../Landing';
 import styles from './Row.module.scss';
 
 const Row = ({ rowData }) => {
   const dateParsed = rowData.year !== undefined ? new Date(rowData.year) : null;
+  const { setItemToDisplay } = useContext(Context);
 
   return (
-    <tr className={styles.root}>
+    <tr
+      className={styles.root}
+      onClick={() => setItemToDisplay({
+        id: rowData.id,
+        isVisible: true,
+      })}
+    >
       <td className={styles.rowItem}>{rowData.id}</td>
       <td className={styles.rowItem}>{rowData.name}</td>
       <td className={styles.rowItem}>{rowData.nametype}</td>
