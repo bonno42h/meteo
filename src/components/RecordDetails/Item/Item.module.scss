@@ -1,0 +1,26 @@
+.root {
+  margin: 8px 5px;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.label {
+  width: 100px;
+  margin: 10px 10px 5px 0;
+  font-size: 12px;
+  text-align: right;
+  color: #000;
+  cursor: pointer;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.itemContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+  position: relative;
+}

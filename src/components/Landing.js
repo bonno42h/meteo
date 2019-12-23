@@ -5,7 +5,7 @@ import Header from './Header/Header';
 import Table from './Table/Table';
 import Footer from './Footer/Footer';
 import styles from './Table.module.scss';
-import ItemDetails from './ItemDetails/ItemDetails';
+import RecordDetails from './RecordDetails/RecordDetails';
 
 const { Provider } = Context;
 
@@ -22,9 +22,9 @@ const Landing = () => {
     error: null,
     hasLoaded: false,
   });
-  const [itemToDisplay, setItemToDisplay] = useState({
+  const [recordToDisplay, setRecordToDisplay] = useState({
     id: '',
-    visible: false,
+    isVisible: false,
   });
   const [sortRequest, setSortRequest] = useState({
     sortBy: 'name',
@@ -80,13 +80,13 @@ const Landing = () => {
           isInfiniteScroll,
           setIsInfiniteScroll,
           setInfiniteAmountToDisplay,
-          setItemToDisplay,
+          setRecordToDisplay,
         }}
       >
         <div className={styles.root}>
           <Header />
           <Table hasLoaded={hasLoaded} data={data} isLoading={isLoading} isInfiniteScroll={isInfiniteScroll} />
-          {!!itemToDisplay.visible && <ItemDetails id={itemToDisplay.id} />}
+          {recordToDisplay.isVisible && <RecordDetails id={recordToDisplay.id} />}
           {hasLoaded && !isInfiniteScroll && (
             <Footer
               setSelectedPage={setSelectedPage}
