@@ -16,7 +16,7 @@ const MeteorPinpoint = ({ text }) => (
 const Map = ({ name, location }) => {
   const latitude = parseFloat(location.latitude);
   const longitude = parseFloat(location.longitude);
-
+  console.log(process.env);
   return (
     <div className={styles.root} style={{ height: '20vh' }}>
       <GoogleMapReact
