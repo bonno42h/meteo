@@ -20,7 +20,7 @@ const Map = ({ name, location }) => {
   return (
     <div className={styles.root} style={{ height: '20vh' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.MAPS_API_KEY }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_MAPS_API_KEY }}
         defaultCenter={{ lat: latitude, lng: longitude }}
         defaultZoom={9}
       >
