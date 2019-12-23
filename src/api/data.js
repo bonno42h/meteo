@@ -15,5 +15,5 @@ export function getRecordCount() {
 }
 
 export function getRecordById(id) {
-  return axios.get(`${DATA_URL}/id=${id}`);
+  return axios.get(`${DATA_URL}/?id=${id}`);
 }
