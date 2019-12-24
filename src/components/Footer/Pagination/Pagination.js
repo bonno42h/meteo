@@ -58,12 +58,18 @@ const Pagination = ({ selectedPage, setSelectedPage, totalPages }) => {
           </button>
         )
       )}
-      <button type="button" onClick={() => nextPage({ setSelectedPage })}>
-        <FiChevronRight />
-      </button>
-      <button type="button" onClick={() => lastPage({ setSelectedPage, totalPages })}>
-        <FiChevronsRight />
-      </button>
+      {selectedPage < totalPages - 1 && (
+        <>
+          <button type="button" onClick={() => nextPage({ setSelectedPage })}>
+            <FiChevronRight />
+          </button>
+          {selectedPage !== totalPages - 2 && (
+            <button type="button" onClick={() => lastPage({ setSelectedPage, totalPages })}>
+              <FiChevronsRight />
+            </button>
+          )}
+        </>
+      )}
     </div>
   );
 };
