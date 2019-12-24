@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .pagination {
   display: flex;
   align-self: center;
@@ -8,22 +10,22 @@
     height: 40px;
     padding: 0;
     border: none;
-    background-color: #583bb6;
-    color: #fff;
+    background-color: $colorPurple;
+    color: $colorWhite;
     margin: 0 2px;
     outline: none;
     cursor: pointer;
     transition: 0.15s;
     &:hover {
-      background-color: #4d34a0;
+      background-color: $colorPurple;
     }
   }
   .selected {
-    background-color: rgb(250, 35, 86);
+    background-color: $colorRed;
     font-weight: bold;
     &:hover {
       cursor: auto;
-      background-color: rgb(250, 35, 86);
+      background-color: $colorBtnRedHover;
     }
   }
 }

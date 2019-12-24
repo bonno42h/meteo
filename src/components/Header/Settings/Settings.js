@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Switch from 'react-switch';
 import { MdSettings } from 'react-icons/md';
-import { Context } from '../../Context';
+import { Context } from 'components/Context';
 import styles from './Settings.module.scss';
 
 const Settings = () => {
@@ -26,7 +26,12 @@ const Settings = () => {
             <Switch
               onChange={() => {
                 setIsInfiniteScroll(!isInfiniteScroll);
-                setInfiniteAmountToDisplay((prevState) => prevState + 30);
+                setInfiniteAmountToDisplay((prevState) => {
+                  if (prevState === null) {
+                    return 0;
+                  }
+                  return prevState;
+                });
               }}
               checked={isInfiniteScroll}
             />

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { loadPagedData, loadInfiniteData } from './Table.utils';
+import { loadPagedData, loadInfiniteData } from './Landing.utils';
 import Context from './Context';
 import Header from './Header/Header';
 import Table from './Table/Table';
 import Footer from './Footer/Footer';
-import styles from './Table.module.scss';
 import RecordDetails from './RecordDetails/RecordDetails';
+import styles from './Landing.module.scss';
 
 const { Provider } = Context;
 
@@ -32,7 +32,7 @@ const Landing = () => {
   });
   const [selectedPage, setSelectedPage] = useState(0);
   const [recordLimit, setRecordLimit] = useState('10');
-  const [infiniteAmountToDisplay, setInfiniteAmountToDisplay] = useState(0);
+  const [infiniteAmountToDisplay, setInfiniteAmountToDisplay] = useState(null);
   const { sortBy, order } = sortRequest;
   const pagedParams = {
     $limit: recordLimit,

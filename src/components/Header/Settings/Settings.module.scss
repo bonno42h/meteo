@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .root {
   float: right;
   padding: 20px 0 20px 20px;
@@ -6,7 +8,7 @@
 }
 
 .settingsIcon {
-  color: #fff;
+  color: $colorWhite;
   height: 20px;
   width: 20px;
   align-self: center;
@@ -27,13 +29,13 @@
     width: 20px;
     height: 20px;
     border: none;
-    background-color: rgb(250, 35, 86);
-    color: #fff;
+    background-color: $colorRed;
+    color: $colorWhite;
     outline: none;
     cursor: pointer;
     transition: 0.15s;
     &:hover {
-      background-color: rgb(187, 27, 64);
+      background-color: $colorBtnRedHover;
     }
   }
 }
@@ -45,7 +47,7 @@
   padding: 15px 0 15px 5px;
   span {
     padding-right: 15px;
-    color: #fff;
+    color: $colorWhite;
   }
 
 }

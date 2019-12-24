@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
-import meteorusLogo from '../../../assets/favicon.ico';
+import meteorusLogo from 'assets/favicon.ico';
 import styles from './Map.module.scss';
 
 const MeteorPinpoint = ({ text }) => (

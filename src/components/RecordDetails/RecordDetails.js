@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import format from 'date-fns/format';
 import PropTypes from 'prop-types';
+import Spinner from 'components/common/Spinner/Spinner';
 import { Context } from '../Context';
 import { loadRecordById } from './RecordDetails.utils';
-import Spinner from '../common/Spinner/Spinner';
 import Item from './Item/Item';
 import Map from './Map/Map';
 import styles from './RecordDetails.module.scss';
@@ -42,6 +42,11 @@ const RecordDetails = ({ id }) => {
             <h1>
               {data.name}
             </h1>
+            <button type="button" className={styles.close} onClick={() => handleModalClose()}>
+              <div>
+                X
+              </div>
+            </button>
             <div className={styles.itemGroup}>
               <Item value={data.id} label="ID" />
               <Item value={data.nametype} label="Nametype" />

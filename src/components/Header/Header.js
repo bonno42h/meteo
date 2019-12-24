@@ -1,5 +1,5 @@
 import React from 'react';
-import meteorusLogo from '../../assets/meteorus.png';
+import meteorusLogo from 'assets/meteorus.png';
 import Settings from './Settings/Settings';
 import styles from './Header.module.scss';
 

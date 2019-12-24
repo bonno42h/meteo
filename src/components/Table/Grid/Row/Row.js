@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import format from 'date-fns/format';
 import PropTypes from 'prop-types';
-import Context from '../../../Context';
+import Context from 'components/Context';
 import styles from './Row.module.scss';
 
 const Row = ({ rowData }) => {
@@ -16,13 +16,13 @@ const Row = ({ rowData }) => {
         isVisible: true,
       })}
     >
-      <td className={styles.rowItem}>{rowData.id}</td>
-      <td className={styles.rowItem}>{rowData.name}</td>
-      <td className={styles.rowItem}>{rowData.nametype}</td>
-      <td className={styles.rowItem}>{rowData.recclass}</td>
-      <td className={styles.rowItem}>{rowData.mass}</td>
-      <td className={styles.rowItem}>{rowData.fall}</td>
-      <td className={styles.rowItem}>{dateParsed !== null ? format(dateParsed, 'yyyy') : '-'}</td>
+      <td>{rowData.id}</td>
+      <td>{rowData.name}</td>
+      <td>{rowData.nametype}</td>
+      <td>{rowData.recclass}</td>
+      <td>{rowData.mass}</td>
+      <td>{rowData.fall}</td>
+      <td>{dateParsed !== null ? format(dateParsed, 'yyyy') : '-'}</td>
     </tr>
   );
 };

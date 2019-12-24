@@ -1,4 +1,4 @@
-import { getPagedData, getInfiniteData } from '../api/data';
+import { getPagedData, getInfiniteData } from 'api/data';
 
 export const loadPagedData = async ({ params = {}, setPagedDataRequest }) => {
   setPagedDataRequest((prevState) => ({

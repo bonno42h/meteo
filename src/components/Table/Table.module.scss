@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .table {
   padding-bottom: 10px;
   min-width: 100%;
@@ -40,15 +42,15 @@
       border-top-right-radius: 10px;
     }
     tr {
-      background-color: #583bb6;
-      color: #fff;
+      background-color: $colorPurple;
+      color: $colorWhite;
     }
   }
   tbody {
     tr {
       transition: 0.3s;
-      background-color: #fff;
-      color: #555555;
+      background-color: $colorWhite;
+      color: $colorDarkGrey;
       &:last-child {
         td:first-child {
           border-bottom-left-radius: 10px;
@@ -58,14 +60,14 @@
         }
       }
       &:hover {
-        background-color: #c4c4c4;
-        color: #000;
+        background-color: $colorGrey;
+        color: $colorBlack;
       }
       &:nth-child(even) {
-        background-color: #f5f5f5;  
+        background-color: $colorLightGrey;  
         &:hover {
-          background-color: #c4c4c4;
-          color: #000;
+          background-color: $colorGrey;
+          color: $colorBlack;
         }
       }
     }

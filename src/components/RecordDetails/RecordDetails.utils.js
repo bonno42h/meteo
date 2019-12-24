@@ -1,4 +1,4 @@
-import { getRecordById } from '../../api/data';
+import { getRecordById } from 'api/data';
 
 export const loadRecordById = async ({ id, setRecordDataRequest }) => {
   setRecordDataRequest((prevState) => ({

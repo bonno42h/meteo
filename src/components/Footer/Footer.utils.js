@@ -1,4 +1,4 @@
-import { getRecordCount } from '../../api/data';
+import { getRecordCount } from 'api/data';
 
 export const loadRecordCount = async (setRecordCount) => {
   try {
