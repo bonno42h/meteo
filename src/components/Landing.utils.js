@@ -11,16 +11,15 @@ export const loadPagedData = async ({ params = {}, setPagedDataRequest }) => {
     setPagedDataRequest({
       data,
       isLoading: false,
-      error: null,
       hasLoaded: true,
     });
   } catch (error) {
     setPagedDataRequest({
       data: [],
       isLoading: false,
-      error,
       hasLoaded: true,
     });
+    window.alert(error);
   }
 };
 
@@ -35,15 +34,14 @@ export const loadInfiniteData = async ({ params = {}, setInfiniteDataRequest }) 
     setInfiniteDataRequest((prevState) => ({
       data: [...prevState.data, ...data],
       isLoading: false,
-      error: null,
       hasLoaded: true,
     }));
   } catch (error) {
     setInfiniteDataRequest({
       data: [],
       isLoading: false,
-      error,
       hasLoaded: false,
     });
+    window.alert(error);
   }
 };

@@ -12,13 +12,12 @@ export const loadRecordById = async ({ id, setRecordDataRequest }) => {
     setRecordDataRequest({
       data: data[0],
       isLoading: false,
-      error: null,
     });
   } catch (error) {
     setRecordDataRequest({
       data: [],
       isLoading: false,
-      error,
     });
+    window.alert(error);
   }
 };

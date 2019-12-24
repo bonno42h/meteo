@@ -29,6 +29,7 @@
         "react"
     ],
     "rules": {
+        "no-alert" : "off",
         "indent": [
             "error",
             2

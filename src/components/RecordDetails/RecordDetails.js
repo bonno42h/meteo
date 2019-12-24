@@ -12,7 +12,6 @@ const RecordDetails = ({ id }) => {
   const [recordDataRequest, setRecordDataRequest] = useState({
     data: [],
     isLoading: true,
-    error: null,
   });
 
   const { setRecordToDisplay } = useContext(Context);

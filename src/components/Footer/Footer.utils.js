@@ -6,7 +6,7 @@ export const loadRecordCount = async (setRecordCount) => {
 
     setRecordCount(data[0].count);
   } catch (error) {
-    console.log(error);
+    window.alert(error);
   }
 };
 

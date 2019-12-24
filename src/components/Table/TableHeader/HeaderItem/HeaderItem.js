@@ -29,7 +29,6 @@ const HeaderItem = ({ label, itemKey }) => {
           data: [],
           isLoading: true,
           hasLoaded: true,
-          error: null,
         });
         setInfiniteAmountToDisplay(0);
       }}

@@ -13,13 +13,11 @@ const Landing = () => {
   const [pagedDataRequest, setPagedDataRequest] = useState({
     data: [],
     isLoading: true,
-    error: null,
     hasLoaded: false,
   });
   const [infiniteDataRequest, setInfiniteDataRequest] = useState({
     data: [],
     isLoading: true,
-    error: null,
     hasLoaded: false,
   });
   const [recordToDisplay, setRecordToDisplay] = useState({
