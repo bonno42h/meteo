@@ -85,14 +85,14 @@ const Landing = () => {
           <Header />
           <Table hasLoaded={hasLoaded} data={data} isLoading={isLoading} isInfiniteScroll={isInfiniteScroll} />
           {recordToDisplay.isVisible && <RecordDetails id={recordToDisplay.id} />}
-          {hasLoaded && !isInfiniteScroll && (
-            <Footer
-              setSelectedPage={setSelectedPage}
-              recordLimit={recordLimit}
-              selectedPage={selectedPage}
-              setRecordLimit={setRecordLimit}
-            />
-          )}
+          <Footer
+            isInfiniteScroll={isInfiniteScroll}
+            setSelectedPage={setSelectedPage}
+            recordLimit={recordLimit}
+            selectedPage={selectedPage}
+            setRecordLimit={setRecordLimit}
+            hasLoaded={hasLoaded}
+          />
         </div>
       </Provider>
     </>

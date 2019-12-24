@@ -1,11 +1,11 @@
 .header {
   display: flex;
-  justify-content: space-between;
-
+  flex-direction: column;
 }
 
 .logo {
   height: 60px;
   filter: invert(100%);
   padding: 20px;
+  align-self: flex-start;
 }

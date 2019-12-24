@@ -1,10 +1,11 @@
 @import 'styles/variables';
 
 .root {
-  float: right;
+  align-self: flex-end;
   padding: 20px 0 20px 20px;
   height: 60px;
   display: flex;
+  position: absolute;
 }
 
 .settingsIcon {

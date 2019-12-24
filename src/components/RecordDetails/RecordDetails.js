@@ -31,12 +31,13 @@ const RecordDetails = ({ id }) => {
 
   return (
     <div>
+      {isLoading && <Spinner rootClassName={styles.spinner} />}
       <div
         className={styles.modalOpenBackground}
         onClick={() => handleModalClose()}
       />
-      <section className={styles.modalMain}>
-        {!isLoading && (
+      {!isLoading && (
+        <section className={styles.modalMain}>
           <div>
             <h1>
               {data.name}
@@ -62,9 +63,8 @@ const RecordDetails = ({ id }) => {
             </div>
             <Map name={data.name} location={data.geolocation} />
           </div>
-        )}
-        {isLoading && <Spinner />}
-      </section>
+        </section>
+      )}
     </div>
   );
 };

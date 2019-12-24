@@ -12,7 +12,7 @@
 .modalMain {
   border-radius: 10px;
   position:fixed;
-  background-color: #f5f5f5;
+  background-color: $colorLightGrey;
   width: 70%;
   height: auto;
   top:40%;
@@ -58,4 +58,13 @@
   display: flex;
   justify-content: space-between;
   margin: 0 -5px;
+}
+
+.spinner {
+  display: inline;
+  z-index: 1;
+  position: absolute;
+  top: 30%;
+  transform: translate(-50%,-50%);
+  left: 50%;
 }
