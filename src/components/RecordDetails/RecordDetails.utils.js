@@ -1,4 +1,5 @@
 import { getRecordById } from 'api/data';
+import showNotification from 'utils/Notification/Notification';
 
 export const loadRecordById = async ({ id, setRecordDataRequest }) => {
   setRecordDataRequest((prevState) => ({
@@ -18,6 +19,6 @@ export const loadRecordById = async ({ id, setRecordDataRequest }) => {
       data: [],
       isLoading: false,
     });
-    window.alert(error);
+    showNotification({ error, type: 'error' });
   }
 };

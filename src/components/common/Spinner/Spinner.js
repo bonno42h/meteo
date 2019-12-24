@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Spinner.module.scss';
 
 export const Spinner = ({ rootClassName }) => (
@@ -12,5 +13,12 @@ export const Spinner = ({ rootClassName }) => (
   </div>
 );
 
+Spinner.propTypes = {
+  rootClassName: PropTypes.string,
+};
+
+Spinner.defaultProps = {
+  rootClassName: undefined,
+};
 
 export default Spinner;

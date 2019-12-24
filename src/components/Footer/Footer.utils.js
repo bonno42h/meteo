@@ -1,4 +1,5 @@
 import { getRecordCount } from 'api/data';
+import showNotification from 'utils/Notification/Notification';
 
 export const loadRecordCount = async (setRecordCount) => {
   try {
@@ -6,7 +7,7 @@ export const loadRecordCount = async (setRecordCount) => {
 
     setRecordCount(data[0].count);
   } catch (error) {
-    window.alert(error);
+    showNotification({ error, type: 'error' });
   }
 };
 

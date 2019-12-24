@@ -55,13 +55,17 @@ const RecordDetails = ({ id }) => {
             <div className={styles.itemGroup}>
               <Item value={data.mass} label="Mass, g" />
               <Item value={data.fall} label="Fall" />
-              <Item value={format(new Date(data.year), 'yyyy-MM-dd')} label="Year" />
+              <Item value={data.year ? format(new Date(data.year), 'yyyy-MM-dd') : null} label="Year" />
             </div>
-            <div className={styles.itemGroup}>
-              <Item value={data.reclat} label="Latitude" />
-              <Item value={data.reclong} label="Longitude" />
-            </div>
-            <Map name={data.name} location={data.geolocation} />
+            {data.reclat && (
+              <>
+                <div className={styles.itemGroup}>
+                  <Item value={data.reclat} label="Latitude" />
+                  <Item value={data.reclong} label="Longitude" />
+                </div>
+                <Map name={data.name} location={data.geolocation} />
+              </>
+            )}
           </div>
         </section>
       )}

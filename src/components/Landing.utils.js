@@ -1,4 +1,5 @@
 import { getPagedData, getInfiniteData } from 'api/data';
+import showNotification from 'utils/Notification/Notification';
 
 export const loadPagedData = async ({ params = {}, setPagedDataRequest }) => {
   setPagedDataRequest((prevState) => ({
@@ -19,7 +20,7 @@ export const loadPagedData = async ({ params = {}, setPagedDataRequest }) => {
       isLoading: false,
       hasLoaded: true,
     });
-    window.alert(error);
+    showNotification({ error, type: 'error' });
   }
 };
 
@@ -42,6 +43,6 @@ export const loadInfiniteData = async ({ params = {}, setInfiniteDataRequest }) 
       isLoading: false,
       hasLoaded: false,
     });
-    window.alert(error);
+    showNotification({ error, type: 'error' });
   }
 };
