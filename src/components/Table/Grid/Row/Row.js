@@ -4,17 +4,20 @@ import PropTypes from 'prop-types';
 import Context from 'components/Context';
 import styles from './Row.module.scss';
 
-const Row = ({ rowData }) => {
+const Row = ({ rowData, highlightedRow, setHighlightedRow }) => {
   const dateParsed = rowData.year !== undefined ? new Date(rowData.year) : null;
   const { setRecordToDisplay } = useContext(Context);
 
   return (
     <tr
-      className={styles.root}
-      onClick={() => setRecordToDisplay({
-        id: rowData.id,
-        isVisible: true,
-      })}
+      className={`${rowData.id === highlightedRow ? styles.selectedRow : null} ${styles.root}`}
+      onClick={() => {
+        setHighlightedRow(rowData.id);
+        setRecordToDisplay({
+          id: rowData.id,
+          isVisible: true,
+        });
+      }}
     >
       <td>{rowData.id}</td>
       <td>{rowData.name}</td>
@@ -38,6 +41,12 @@ Row.propTypes = {
     recclass: PropTypes.string.isRequired,
     year: PropTypes.string,
   }).isRequired,
+  highlightedRow: PropTypes.string,
+  setHighlightedRow: PropTypes.func.isRequired,
+};
+
+Row.defaultProps = {
+  highlightedRow: null,
 };
 
 export default Row;

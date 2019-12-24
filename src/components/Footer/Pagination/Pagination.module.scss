@@ -17,7 +17,7 @@
     cursor: pointer;
     transition: 0.15s;
     &:hover {
-      background-color: $colorPurple;
+      background-color: $colorPersianBlue;
     }
   }
   .selected {
@@ -25,7 +25,7 @@
     font-weight: bold;
     &:hover {
       cursor: auto;
-      background-color: $colorBtnRedHover;
+      background-color: $colorRed;
     }
   }
 }

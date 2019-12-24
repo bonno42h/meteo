@@ -1,4 +1,11 @@
+@import 'styles/variables';
+
 .root {
   flex-direction: row;
   flex: 1,
+}
+
+.selectedRow {
+  background-color: $colorDarkGrey !important;
+  color: $colorWhite !important;
 }
