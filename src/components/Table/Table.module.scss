@@ -3,12 +3,10 @@
 .table {
   padding-bottom: 10px;
   min-width: 100%;
-  table {
-    border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 10px;
-    table-layout: fixed;
-  }
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 10px;
+  table-layout: fixed;
 
   thead {
     th {
@@ -51,14 +49,6 @@
       transition: 0.3s;
       background-color: $colorWhite;
       color: $colorDarkGrey;
-      &:last-child {
-        td:first-child {
-          border-bottom-left-radius: 10px;
-        }
-        td:last-child {
-          border-bottom-right-radius: 10px;
-        }
-      }
       &:hover {
         background-color: $colorGrey;
         color: $colorBlack;

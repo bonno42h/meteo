@@ -52,7 +52,7 @@ const Pagination = ({ selectedPage, setSelectedPage, totalPages }) => {
             type="button"
             key={page + 1}
             onClick={() => setSelectedPage(page - 1)}
-            className={page === selectedPage + 1 ? styles.selected : null}
+            className={page === selectedPage + 1 ? styles.selected : ''}
           >
             {page}
           </button>

@@ -10,7 +10,7 @@ const Row = ({ rowData, highlightedRow, setHighlightedRow }) => {
 
   return (
     <tr
-      className={`${rowData.id === highlightedRow ? styles.selectedRow : null} ${styles.root}`}
+      className={`${rowData.id === highlightedRow ? styles.selectedRow : ''} ${styles.root}`}
       onClick={() => {
         setHighlightedRow(rowData.id);
         setRecordToDisplay({
