@@ -63,6 +63,8 @@ const Landing = () => {
     } else {
       loadPagedData({ params: pagedParams, setPagedDataRequest });
     }
+    // TODO fix the warning
+    // eslint-disable-next-line
   }, [selectedPage, sortRequest, recordLimit, infiniteAmountToDisplay]);
 
 
