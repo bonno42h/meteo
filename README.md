@@ -1,9 +1,9 @@
 # meteorus.
 Meteorite explorer.  
-React based data representation table.  
-Made from scratch by [bonno](https://github.com/bonno42h)
+React-based data representation table.  
+Made from scratch by [bonno](https://github.com/bonno42h).
 
-Deployed application can be found here: https://meteorus.herokuapp.com
+The deployed application can be found here: https://meteorus.herokuapp.com
 
 ## Setup locally guidelines
  * Clone the repository;
@@ -31,7 +31,7 @@ Deployed application can be found here: https://meteorus.herokuapp.com
  * Google Map React - to display the location of a meteorite;
  * prop-types - prop type checking;
  * node-sass - for sass stylesheets + modules;
- * axios - promise based HTTP client for the browser;
+ * axios - promise-based HTTP client for the browser;
  
  ## Possible improvements:
  * Implement a search bar;
