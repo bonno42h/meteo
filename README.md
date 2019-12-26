@@ -1,8 +1,6 @@
 # meteorus.
-Meteorite explorer
-
-React based data representation table.
-
+Meteorite explorer.  
+React based data representation table.  
 Made from scratch by [bonno](https://github.com/bonno42h)
 
 Deployed application can be found here: https://meteorus.herokuapp.com
