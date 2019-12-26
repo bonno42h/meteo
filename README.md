@@ -35,6 +35,7 @@ The deployed application can be found here: https://meteorus.herokuapp.com
  
  ## Possible improvements:
  * Implement a search bar;
+ * Make it mobile-friendly;
  
  ## To be added:
  * Unit tests;
